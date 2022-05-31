@@ -6,19 +6,19 @@ const DUMMY_EXPENSES = [
   {
     id    : "e1",
     title : "제목1",
-    amount: "100",
+    amount: 100,
     date  : new Date(2022, 4, 30)
   },
   {
     id    : "e2",
     title : "제목2",
-    amount: "200",
+    amount: 200,
     date  : new Date(2022, 4, 31)
   },
   {
     id    : "e3",
     title : "제목3",
-    amount: "300",
+    amount: 500,
     date  : new Date(2022, 5, 1)
   }
 ];

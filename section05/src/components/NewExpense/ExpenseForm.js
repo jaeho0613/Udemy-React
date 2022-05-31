@@ -1,5 +1,5 @@
 import "./ExpenseForm.css";
-import { useState } from "react";
+import {useState} from "react";
 
 const ExpenseForm = (props) => {
 
@@ -31,7 +31,6 @@ const ExpenseForm = (props) => {
     // });
   };
 
-
   const amountChangeHandler = (event) => {
     setEnteredAmount(event.target.value);
 
@@ -40,7 +39,6 @@ const ExpenseForm = (props) => {
     //   enteredAmount: event.target.value
     // });
   };
-
 
   const dateChangeHandler = (event) => {
     setEnteredDate(event.target.value);
@@ -55,33 +53,38 @@ const ExpenseForm = (props) => {
     event.preventDefault();
     const expenseData = {
       title : enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date  : new Date(enteredDate)
     };
-    
+
     props.onSaveExpenseData(expenseData);
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
   };
 
+  const cancelButton = () => {
+    props.onCancel();
+  };
+  
   return (
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input type="text" value={enteredTitle} onChange={titleChangeHandler} />
+          <input type="text" value={enteredTitle} onChange={titleChangeHandler}/>
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
-          <input type="number" value={enteredAmount} min="0.01" step="0.01" onChange={amountChangeHandler} />
+          <input type="number" value={enteredAmount} min="0.01" step="0.01" onChange={amountChangeHandler}/>
         </div>
         <div className="new-expense__control">
           <label>Date</label>
-          <input type="date" value={enteredDate} min="2011-01-01" max="2022-12-31" onChange={dateChangeHandler} />
+          <input type="date" value={enteredDate} min="2011-01-01" max="2022-12-31" onChange={dateChangeHandler}/>
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="button" onClick={cancelButton}>Cancel</button>
         <button type="submit">Add Submit</button>
       </div>
     </form>
